@@ -1,0 +1,28 @@
+.TestForm {
+    background-color: rgb(240, 240, 240);
+}
+
+.TestName {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.TestSubmit {
+    border: 0;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    margin: 0 auto;
+    display:flex;
+    justify-content:center;
+    background-color: rgb(135, 247, 135);
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+    color: #fff;
+    background-color: #0acc2e;
+    border-color: #008f39;
+}

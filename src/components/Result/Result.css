@@ -1,0 +1,72 @@
+.ResultLabel {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.ResultContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 50%;
+}
+
+.ResultTable {
+    background-color: rgb(240, 240, 240);
+}
+
+.lvl0 {
+    color: greenyellow;
+}
+
+.lvl1 {
+    color: rgb(215, 200, 41);
+}
+
+.lvl2 {
+    color: rgb(255, 190, 70);
+}
+
+.lvl3 {
+    color: rgb(246, 115, 0);
+}
+
+.lvl4 {
+    color: red;
+}
+
+.diagnosis {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+td {
+    text-align: center;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 30px;
+}
+
+.ButtonNav {
+    border: 0;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    margin: 0 auto;
+    display:flex;
+    justify-content:center;
+    background-color: rgb(135, 247, 135);
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+    color: #fff;
+    background-color: #0acc2e;
+    border-color: #008f39;
+}
