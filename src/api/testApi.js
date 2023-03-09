@@ -6,7 +6,10 @@ export const submitTest = (answer) =>
     ...getCommonJsonRequestProps(),
     body: JSON.stringify({"answer" : answer}),
   }).then(response => throwHttpErrors(response))
-    .then(response => response.json());
+    .then(response => {
+      console.log(response);
+      return response.json();
+    });
 
 export const getResult = (test_id) => {
   return fetch(`http://localhost:3001/api/ihru?test_id=${test_id}`, {

@@ -14,7 +14,7 @@ const HistoryTable = ({ data }) => {
         <Table responsive>
           <thead>
             <tr>
-              <th>#</th>
+              <th></th>
               {tableData.map((test, index) => (
                 <th key={index}>{new Date(test.timestamp).toLocaleString("en-US", {timeZone: "Europe/Moscow"})}</th>
               ))}

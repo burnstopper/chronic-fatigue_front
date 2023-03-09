@@ -1,6 +1,8 @@
+import CookieLib from "./components/cookie-lib";
+
 export const getCommonHttpRequestProps = () => {
-    const props = {credentials: "same-origin"};
-    const token = "qwertyuiopasdfghjklzxcvbnm1234567890"
+  const props = {credentials: "same-origin"};
+    const token = CookieLib.getCookieToken();
     if (token) {
       props.headers = {Authorization: `Bearer ${token}`};
     }

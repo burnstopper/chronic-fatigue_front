@@ -56,13 +56,13 @@ const Result = () => {
                     </tr>
                 </table>
                 <hr></hr>
-                <p className={`diagnosis ${result.o <= 17 ? 'lvl0' : 
-                                            result.o <= 26 ? 'lvl1' : 
-                                            result.o <= 37 ? 'lvl2' :
-                                            result.o <= 48 ? 'lvl3' : 'lvl4'}`}>{result.o <= 17 ? 'Отсутствие признаков хронического утомления' : 
-                                            result.o <= 26 ? 'Начальная степень хронического утомления' : 
-                                            result.o <= 37 ? 'Выраженная степень хронического утомления' :
-                                            result.o <= 48 ? 'Сильная степень хронического утомления' : 'Переход в область патологических состояний (астенический синдром)'}</p>
+                <p className={`diagnosis ${result.distress <= 17 ? 'lvl0' : 
+                                            result.distress <= 26 ? 'lvl1' : 
+                                            result.distress <= 37 ? 'lvl2' :
+                                            result.distress <= 48 ? 'lvl3' : 'lvl4'}`}>{result.distress <= 17 ? 'Отсутствие признаков хронического утомления' : 
+                                            result.distress <= 26 ? 'Начальная степень хронического утомления' : 
+                                            result.distress <= 37 ? 'Выраженная степень хронического утомления' :
+                                            result.distress <= 48 ? 'Сильная степень хронического утомления' : 'Переход в область патологических состояний (астенический синдром)'}</p>
                 <hr></hr>
                 <Button className='ButtonNav mt-3' variant="primary" type="button" onClick={handleStartAgain}>Пройти тест ещё раз</Button>
                 <Button className='ButtonNav mt-3 mb-3' variant="primary" type="button" onClick={handleBack}>Вернуться на страницу теста</Button>
