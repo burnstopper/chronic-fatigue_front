@@ -1,17 +1,25 @@
 import React, { useEffect } from 'react';
-import { Container, Form, Button } from 'react-bootstrap';
-import { useSearchParams } from "react-router-dom";
+import { Container, Button } from 'react-bootstrap';
+import Alert from 'react-bootstrap/Alert';
+import { useParams } from "react-router-dom";
 import './Result.css';
 import { getResult } from '../../api/testApi';
 
 const Result = () => {
-    let [searchParams, setSearchParams] = useSearchParams();
-    let [result, setResult] = React.useState({});
-    let res_id = searchParams.get('result_id');
+    const { result_id } = useParams();
+    const [result, setResult] = React.useState({});
+    const [show, setShow] = React.useState(false);
+    const [error, setError] = React.useState('');
+
     useEffect(() => {
         async function getResults() {
-            const results = await getResult(res_id);
-            setResult(results);
+            try {
+                const results = await getResult(result_id);
+                setResult(results);
+            } catch (error) {
+                setShow(true);
+                setError(error.message);
+            }
         }
         getResults();
     }, []); 
@@ -26,6 +34,11 @@ const Result = () => {
 
     return (
         <Container className='ResultContainer p-5'>
+            {show && <Alert className='mt-3' variant="danger" onClose={() => handleBack()} dismissible>
+                <Alert.Heading>Ошибка!</Alert.Heading>
+                {error}
+            </Alert>}
+            {!show && <div>
             <p className='ResultLabel'>Ваш результат: </p>
             <Container className='ResultTable rounded mt-5'>
                 <table>
@@ -66,7 +79,7 @@ const Result = () => {
                 <hr></hr>
                 <Button className='ButtonNav mt-3' variant="primary" type="button" onClick={handleStartAgain}>Пройти тест ещё раз</Button>
                 <Button className='ButtonNav mt-3 mb-3' variant="primary" type="button" onClick={handleBack}>Вернуться на страницу теста</Button>
-            </Container>
+            </Container></div>}
         </Container>
     );
 };

@@ -15,7 +15,7 @@ function App() {
             <BrowserRouter>
               <Routes >
                 <Route exact path="/ihru/test" element={<Test />} />
-                <Route exact path="/ihru/result" element={<Result />} />
+                <Route exact path="/ihru/result/:result_id" element={<Result />} />
                 <Route exact path="/ihru" element={<Main />} />
               </Routes>
             </BrowserRouter>

@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
 import Question from '../Question/Question';
 import './Test.css';
 import { submitTest } from '../../api/testApi';
-import { redirect } from "react-router-dom";
+import Alert from 'react-bootstrap/Alert';
 
 const Test = () => {
   const questions = [["Чаще всего у меня хорошее самочувствие", 1],
@@ -43,6 +43,9 @@ const Test = () => {
     ["В последнее время я чувствую общее недомогание", 35],
     ["Я чувствую себя абсолютно здоровым человеком", 36]];
 
+  const [show, setShow] = useState(false);
+  const [errorText, setErrorText] = useState('');
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -72,10 +75,12 @@ const Test = () => {
         }
       }
     } else {
-      return alert('Выберите ответы на все вопросы');
+      setErrorText("Выберите ответ на все вопросы!");
+      setShow(true);
+      return;
     }
       
-    submitTest(answers).then((res) => { window.location.replace(`/ihru/result?result_id=${res.result_id}`) }).catch((err) => { alert(err) });
+    submitTest(answers).then((res) => { window.location.replace(`/ihru/result/${res.result_id}`) }).catch((err) => { setErrorText(err.toString()); setShow(true); });
   };
 
   return (
@@ -88,6 +93,10 @@ const Test = () => {
             question_id={question[1]}
           />))
         }
+        {show && <Alert className='mt-3' variant="danger" onClose={() => setShow(false)} dismissible>
+          <Alert.Heading>Ошибка!</Alert.Heading>
+          {errorText}
+          </Alert>}
         <Button className='TestSubmit mt-5' variant="primary" type="submit">Получить результат</Button>
       </Form>
     </Container>
