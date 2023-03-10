@@ -1,10 +1,10 @@
 import { getCommonJsonRequestProps,  getCommonHttpRequestProps, throwHttpErrors } from "../common";
 
-export const submitTest = (answer) =>
+export const submitTest = (answer, quiz_id) =>
   fetch(`http://localhost:3001/api/ihru/test`, {
     method: "POST",
     ...getCommonJsonRequestProps(),
-    body: JSON.stringify({"answer" : answer}),
+    body: JSON.stringify({"answer" : answer, "quiz_id" : quiz_id}),
   }).then(response => throwHttpErrors(response))
     .then(response => {
       console.log(response);

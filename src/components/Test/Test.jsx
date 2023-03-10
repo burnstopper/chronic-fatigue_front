@@ -4,6 +4,8 @@ import Question from '../Question/Question';
 import './Test.css';
 import { submitTest } from '../../api/testApi';
 import Alert from 'react-bootstrap/Alert';
+import { useSearchParams } from "react-router-dom";
+
 
 const Test = () => {
   const questions = [["Чаще всего у меня хорошее самочувствие", 1],
@@ -45,6 +47,9 @@ const Test = () => {
 
   const [show, setShow] = useState(false);
   const [errorText, setErrorText] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const quiz_id = searchParams.get("quiz_id");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -80,7 +85,7 @@ const Test = () => {
       return;
     }
       
-    submitTest(answers).then((res) => { window.location.replace(`/ihru/result/${res.result_id}`) }).catch((err) => { setErrorText(err.toString()); setShow(true); });
+    submitTest(answers, quiz_id).then((res) => { window.location.replace(`/ihru/result/${res.result_id}`) }).catch((err) => { setErrorText(err.toString()); setShow(true); });
   };
 
   return (
