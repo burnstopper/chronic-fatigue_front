@@ -4,7 +4,7 @@ export const getCommonHttpRequestProps = () => {
   const props = {credentials: "same-origin"};
     const token = CookieLib.getCookieToken();
     if (token) {
-      props.headers = {Authorization: `${token}`};
+      props.headers = {Authorization: `Bearer ${token}`};
     }
     return props;
   };

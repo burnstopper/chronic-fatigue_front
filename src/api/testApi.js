@@ -9,7 +9,7 @@ export const submitTest = (answer, quiz_id) =>
   }).then(response => throwHttpErrors(response))
   .then(response => {
     if (!CookieLib.getCookieToken() || CookieLib.getCookieToken().length == 0) {
-      CookieLib.setCookieToken(response.headers.get('Authorization'));
+      CookieLib.setCookieToken(response.headers.get('Authorization').replace('Bearer ', ''));
     } 
     return response.json(); 
   });
@@ -21,7 +21,7 @@ export const getResult = (test_id) => {
   }).then(response => throwHttpErrors(response))
   .then(response => {
     if (!CookieLib.getCookieToken() || CookieLib.getCookieToken().length == 0) {
-      CookieLib.setCookieToken(response.headers.get('Authorization'));
+      CookieLib.setCookieToken(response.headers.get('Authorization').replace('Bearer ', ''));
     } 
     return response.json(); 
   });
@@ -34,7 +34,7 @@ export const getResults = () => {
   }).then(response => throwHttpErrors(response))
     .then(response => {
       if (!CookieLib.getCookieToken() || CookieLib.getCookieToken().length == 0) {
-        CookieLib.setCookieToken(response.headers.get('Authorization'));
+        CookieLib.setCookieToken(response.headers.get('Authorization').replace('Bearer ', ''));
       } 
       return response.json(); 
     });
