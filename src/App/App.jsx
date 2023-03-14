@@ -1,6 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "../components/Header/Header";
-import { BrowserRouter, Route, Routes  } from 'react-router-dom';
 import "./App.css";
 import Test from "../components/Test/Test";
 import Result from "../components/Result/Result";
@@ -10,18 +9,21 @@ import { useState } from "react";
 
 function App() {
   const [token, setToken] = useState(CookieLib.getCookieToken());
+
+  const [testPage, setTestPage] = useState(false);
+  const [resultPage, setResultPage] = useState(false);
+  const [mainPage, setMainPage] = useState(true);
+
+  const [resultId, setResultId] = useState(-1);
+
   return (
     <html>
         <head></head>
           <body>
             <Header token={token} setToken={setToken} />
-            <BrowserRouter>
-              <Routes >
-                <Route exact path="/ihru/test" element={<Test />} />
-                <Route exact path="/ihru/result/:result_id" element={<Result />} />
-                <Route exact path="/ihru" element={<Main />} />
-              </Routes>
-            </BrowserRouter>
+            {mainPage && <Main setTestPage={setTestPage} setResultPage={setResultPage} setMainPage={setMainPage} />}
+            {resultPage && <Result setTestPage={setTestPage} setResultPage={setResultPage} setMainPage={setMainPage} resultId={resultId} />}
+            {testPage && <Test setTestPage={setTestPage} setResultPage={setResultPage} setMainPage={setMainPage} setResultId={setResultId} />}
           </body>
     </html>
   );

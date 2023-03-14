@@ -5,8 +5,8 @@ import { useParams } from "react-router-dom";
 import './Result.css';
 import { getResult } from '../../api/testApi';
 
-const Result = () => {
-    const { result_id } = useParams();
+const Result = ({setMainPage, setResultPage, setTestPage, resultId}) => {
+    const result_id = resultId;
     const [result, setResult] = React.useState({});
     const [show, setShow] = React.useState(false);
     const [error, setError] = React.useState('');
@@ -25,11 +25,13 @@ const Result = () => {
     }, []); 
 
     const handleStartAgain = () => {
-        window.location.href = '/ihru/test';
+       setResultPage(false);
+       setTestPage(true);
     };
 
     const handleBack = () => {
-        window.location.href = '/ihru';
+        setResultPage(false);
+        setMainPage(true);
     };
 
     return (

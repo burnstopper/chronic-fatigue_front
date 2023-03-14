@@ -4,9 +4,10 @@ import HistoryTable from '../HistoryTable/HistoryTable';
 import { getResults } from '../../api/testApi';
 import './Main.css';
 
-const Main = () => {
+const Main = ({setMainPage, setTestPage}) => {
     const handleStart = () => {
-        window.location.href = '/ihru/test';
+        setMainPage(false);
+        setTestPage(true);
     };
 
     let [history, setHistory] = React.useState({});
