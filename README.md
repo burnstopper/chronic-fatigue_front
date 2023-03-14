@@ -3,9 +3,7 @@
 
 1. Страницы.
   Пользователю доступны страницы по следующим адресам:
-  * {host}/ihru - Главная страница теста (описание теста, кнопка для перехода к прохождению, история тестов).
-  * {host}/ihru/test{?=quiz_id} - Страница с формой теста.
-  * {host}/ihru/result/:result_id - Страница с результатами теста.
+  * {host} - Страница теста
 2. Со стороны клиента в бэкэнд направляются следющие запросы (все запросы описаны в src/api/testApi.js):
   * POST: {host}/api/ihru/test - передача на сервер ответа на тест. + headers: Authorization: , Accept: "application/json", Content-Type: "application/json" 
   * GET: {host}/api/ihru??test_id=? - получение результата теста. + headers: Authorization:
