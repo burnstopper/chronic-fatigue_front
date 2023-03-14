@@ -1,8 +1,11 @@
 import { getCommonJsonRequestProps,  getCommonHttpRequestProps, throwHttpErrors } from "../common";
 import CookieLib from "../components/cookie-lib";
 
+//read env variable
+const host = process.env.REACT_APP_HOST_NAME;
+
 export const submitTest = (answer, quiz_id) =>
-  fetch(`http://localhost:3001/api/ihru/test`, {
+  fetch(`${host}/api/ihru/test`, {
     method: "POST",
     ...getCommonJsonRequestProps(),
     body: JSON.stringify({"answer" : answer, "quiz_id" : quiz_id}),
@@ -15,7 +18,7 @@ export const submitTest = (answer, quiz_id) =>
   });
 
 export const getResult = (test_id) => {
-  return fetch(`http://localhost:3001/api/ihru?test_id=${test_id}`, {
+  return fetch(`${host}/api/ihru?test_id=${test_id}`, {
     method: "GET",
     ...getCommonHttpRequestProps(),
   }).then(response => throwHttpErrors(response))
@@ -28,7 +31,7 @@ export const getResult = (test_id) => {
 }
 
 export const getResults = () => {
-  return fetch(`http://localhost:3001/api/ihru/results/resp`, {
+  return fetch(`${host}/api/ihru/results/resp`, {
     method: "GET",
     ...getCommonHttpRequestProps(),
   }).then(response => throwHttpErrors(response))
