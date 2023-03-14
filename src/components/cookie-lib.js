@@ -1,15 +1,15 @@
 import Cookies from "js-cookie";
 
-let exp = {
+const CookieLib = {
     getCookieToken: () => {
         return Cookies.get("token");
     },
     setCookieToken: (token) => {
-        Cookies.set("token", token, { expires: 365, secure: true });
+        Cookies.set("token", token, { expires: 365 });
     },
     removeCookie: () => {
-        Cookies.remove("token", { secure: true });
+        Cookies.remove("token");
     },
-};
+}
 
-export default exp;
+export default CookieLib;

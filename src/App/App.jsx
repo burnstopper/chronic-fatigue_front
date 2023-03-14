@@ -5,13 +5,16 @@ import "./App.css";
 import Test from "../components/Test/Test";
 import Result from "../components/Result/Result";
 import Main from "../components/Main/Main";
+import CookieLib from "../components/cookie-lib";
+import { useState } from "react";
 
 function App() {
+  const [token, setToken] = useState(CookieLib.getCookieToken());
   return (
     <html>
         <head></head>
           <body>
-            <Header />
+            <Header token={token} setToken={setToken} />
             <BrowserRouter>
               <Routes >
                 <Route exact path="/ihru/test" element={<Test />} />
